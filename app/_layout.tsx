@@ -11,7 +11,8 @@ import { ClerkProvider, SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
 import Constants from "expo-constants";
 
 
-const CLERK_PUBLISHABLE_KEY = process.env.CLERK_PUBLISHABLE_KEY;
+const EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 const tokenCache = {
   async getToken(key: string) {
     try {
@@ -21,7 +22,7 @@ const tokenCache = {
       return null;
     }
   },
-    async saveTokken (key: string, value: string) {
+    async saveToken (key: string, value: string) {
       try {
         return SecureStore.setItemAsync (key, value);
       } catch (err) {
@@ -67,7 +68,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
       <RootLayoutNav />
     </ClerkProvider>
   );
