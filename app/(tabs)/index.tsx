@@ -3,16 +3,36 @@ import { ScrollView, Image, StyleSheet, TouchableOpacity, View } from 'react-nat
 
 const ImagenRepetida = () => {
   // Definir la URL de la imagen
+  const imageUrl0 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zg5WoTskWekewC08_FO_Desktop.jpg';
   const imageUrl = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/ZjS3JUMTzAJOCg4C_FLASH_WEB_CARD_MCFLURRY.jpg?auto=format,compress';
+  const imageUrl1 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zg_FlBrFxhpPBU7K_Card_MyMcDonalds.jpg?auto=format,compress';
+  const imageUrl2 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zgu9zct2UUcvBUtr_feature-call-mcdelivery.png?auto=format,compress';
+  const imageUrl3 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zgu-S8t2UUcvBUt4_feature-call-loyalty.png?auto=format,compress';
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
+    
+
       {/* Repetir la imagen cinco veces */}
-      {[...Array(5)].map((_, index) => (
+      {[...Array(2)].map((_, index) => (
         <TouchableOpacity key={index} onPress={() => console.log('Image Pressed')}>
           <View style={styles.imageContainer}>
-            <Image source={{ uri: imageUrl }} style={styles.image} />
+            <Image source={{ uri: imageUrl0 }} style={styles.image} />
           </View>
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: imageUrl}} style={styles.image} />
+          </View>
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: imageUrl1 }} style={styles.image} />
+          </View>
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: imageUrl2}} style={styles.image} />
+          </View>
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: imageUrl3 }} style={styles.image} />
+          </View>
+           
+          
         </TouchableOpacity>
       ))}
     </ScrollView>
@@ -21,7 +41,7 @@ const ImagenRepetida = () => {
 
 const styles = StyleSheet.create({
   scrollViewContent: {
-    paddingVertical: 20, // Espacio en la parte superior e inferior del ScrollView
+    paddingVertical: 50, // Espacio en la parte superior e inferior del ScrollView
     paddingHorizontal: 10, // Espacio en los lados del ScrollView
   },
   imageContainer: {
@@ -33,7 +53,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 200, // Altura de cada imagen
+    height: 220, // Altura de cada imagen
   },
 });
 

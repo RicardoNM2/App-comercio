@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 
 const categories = {
   'Hamburguesas': ['Big Mac', 'Cheeseburger'],
@@ -11,7 +11,6 @@ const categories = {
 const MenuScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [cart, setCart] = useState([]);
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
@@ -21,18 +20,21 @@ const MenuScreen = () => {
     setSelectedProduct(product);
   };
 
-  const handleAddToCart = () => {
-    if (selectedProduct) {
-      setCart([...cart, selectedProduct]);
-    }
-  };
-
   const handleGoBack = () => {
     setSelectedProduct(null);
   };
-
+  
   return (
     <View style={styles.container}>
+      {/* Encabezado con imagen */}
+      <View style={styles.header}>
+        <Image
+          source={require('../../assets/images/productos-mac.jpg')} // Ruta de la imagen para el encabezado
+          style={styles.headerImage}
+        />
+      </View>
+
+      {/* Menú */}
       {!selectedCategory && (
         <ScrollView style={styles.scrollView}>
           {Object.keys(categories).map((category, index) => (
@@ -62,20 +64,8 @@ const MenuScreen = () => {
             <Text style={styles.backButtonText}>Volver</Text>
           </TouchableOpacity>
           <Text style={styles.selectedProductText}>{selectedProduct}</Text>
-          <TouchableOpacity onPress={handleAddToCart} style={styles.addToCartButton}>
-            <Text style={styles.addToCartButtonText}>Agregar al Carrito</Text>
-          </TouchableOpacity>
         </View>
       )}
-
-      <View style={styles.cartContainer}>
-        <Text style={styles.cartTitle}>Carrito</Text>
-        <ScrollView style={styles.cartItems}>
-          {cart.map((item, index) => (
-            <Text key={index} style={styles.cartItem}>{item}</Text>
-          ))}
-        </ScrollView>
-      </View>
     </View>
   );
 };
@@ -84,6 +74,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+  },
+  header: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f2f2f2', // Color de fondo del encabezado
+    paddingVertical: 20,
+  },
+  headerImage: {
+    width: 300, // Ajusta el ancho de la imagen según tus necesidades
+    height: 200, // Ajusta la altura de la imagen según tus necesidades
+    resizeMode: 'contain', // Ajusta el modo de redimensionamiento según tus necesidades
   },
   scrollView: {
     flex: 1,
@@ -113,34 +114,7 @@ const styles = StyleSheet.create({
   },
   selectedProductText: {
     fontSize: 20,
-  },
-  addToCartButton: {
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: 'green',
-    borderRadius: 5,
-  },
-  addToCartButtonText: {
-    fontSize: 16,
-    color: '#ffffff',
-  },
-  cartContainer: {
-    borderTopWidth: 1,
-    borderTopColor: '#cccccc',
-    padding: 20,
-  },
-  cartTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  cartItems: {
-    maxHeight: 150,
-  },
-  cartItem: {
-    fontSize: 16,
-    marginBottom: 5,
-  },
+  }
 });
 
 export default MenuScreen;
