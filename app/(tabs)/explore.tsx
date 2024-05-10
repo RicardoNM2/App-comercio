@@ -30,7 +30,7 @@ const MenuScreen = () => {
       <View style={styles.header}>
         <Image
           source={require('../../assets/images/productos-mac.jpg')} // Ruta de la imagen para el encabezado
-          style={styles.headerImage}
+          style={styles.image}
         />
       </View>
 
@@ -80,6 +80,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#f2f2f2', // Color de fondo del encabezado
     paddingVertical: 20,
+  },
+  image: {
+    width: 400,
+    height: 220,
+    resizeMode: 'cover',
   },
   headerImage: {
     width: 300, // Ajusta el ancho de la imagen según tus necesidades

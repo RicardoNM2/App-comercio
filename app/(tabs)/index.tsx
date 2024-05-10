@@ -7,7 +7,7 @@ const ImagenRepetida = () => {
   const imageUrl = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/ZjS3JUMTzAJOCg4C_FLASH_WEB_CARD_MCFLURRY.jpg?auto=format,compress';
   const imageUrl1 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zg_FlBrFxhpPBU7K_Card_MyMcDonalds.jpg?auto=format,compress';
   const imageUrl2 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zgu9zct2UUcvBUtr_feature-call-mcdelivery.png?auto=format,compress';
-  const imageUrl3 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zgu-S8t2UUcvBUt4_feature-call-loyalty.png?auto=format,compress';
+  const imageUrl3 = 'https://mcdonalds.es/api/cms/images/mcdonalds-es/Zgu-S8t2UUcvBsUt4_feature-call-loyalty.png?auto=format,compress';
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
